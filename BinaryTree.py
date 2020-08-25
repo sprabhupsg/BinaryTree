@@ -6,7 +6,7 @@ class TreeNode:
         self.right = right
 
 
-#To Create a Binary Tree from a list
+#0. To Create a Binary Tree from a list
 def createLevelOrder(root, arr, start, end):
     if start < end and arr[start] != None:
 
@@ -18,7 +18,7 @@ def createLevelOrder(root, arr, start, end):
     return root
 
 
-#PreOrder Traversal with recursion
+#1. PreOrder Traversal with recursion
 def preOrder(root: TreeNode):
     if root is None:
         return
@@ -28,7 +28,7 @@ def preOrder(root: TreeNode):
     preOrder(root.right)
 
 
-#InOrder Traversal with recursion
+#2. InOrder Traversal with recursion
 def inOrder(root: TreeNode):
     if root is None:
         return
@@ -38,7 +38,7 @@ def inOrder(root: TreeNode):
     inOrder(root.right)
 
 
-#Post Order Traversal with recursion
+#3. Post Order Traversal with recursion
 def postOrder(root: TreeNode):
     if root is None:
         return
@@ -48,28 +48,50 @@ def postOrder(root: TreeNode):
     print(root.val, end=", ")
 
 
+#4. Sum of all nodes
+def sumOfAllNodes(root: TreeNode):
+    if not root:
+        return 0
+    
+    return root.val + sumOfAllNodes(root.left) + sumOfAllNodes(root.right)
+
+
+#5. Get difference of values at Even & Odd level
+def diffOddEvenLevel(root: TreeNode):
+    if not root:
+        return 0
+    
+    return root.val - diffOddEvenLevel(root.left) - diffOddEvenLevel(root.right)
+
+
 #Driver - Testing
 def main():
     print("\n Hello github")
 
     #Example 1
-    #arr = [1, 2, 3, 4, 5, 6, 7]
-    #root = None
-    #root = createLevelOrder(root, arr, 0, len(arr))
-
-    #Example 2
-    arr = [1, 2, 3, 4, 5, None, 7, 8, 9, None, 10, None, None, 11, 12]    
-    root = None    
+    arr = [1, 2, 3, 4, 5, 6, 7]
+    root = None
     root = createLevelOrder(root, arr, 0, len(arr))
 
-    print("\n preOrder")
-    preOrder(root)
+    #Example 2
+    #arr = [1, 2, 3, 4, 5, None, 7, 8, 9, None, 10, None, None, 11, 12]    
+    #root = None    
+    #root = createLevelOrder(root, arr, 0, len(arr))
+
+    #print("\n preOrder")
+    #preOrder(root)
     
     print("\n inOrder")
     inOrder(root)
 
-    print("\n postOrder")
-    postOrder(root)
+    #print("\n postOrder")
+    #postOrder(root)
+
+    print("\n Sum of all nodes")
+    print(sumOfAllNodes(root))
+
+    print("\n Diff of odd and even")
+    print(diffOddEvenLevel(root))
     
     print("\n \n End github")    
 
