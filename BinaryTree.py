@@ -5,18 +5,14 @@ class TreeNode:
         self.left = left
         self.right = right
 
-
 #0. To Create a Binary Tree from a list
 def createLevelOrder(root, arr, start, end):
     if start < end and arr[start] != None:
-
         root = TreeNode(arr[start])
-
         root.left  = createLevelOrder(root.left, arr, 2*start+1, end)
         root.right = createLevelOrder(root.right, arr, 2*start+2, end)
         
     return root
-
 
 #1. PreOrder Traversal with recursion
 def preOrder(root: TreeNode):
@@ -27,7 +23,6 @@ def preOrder(root: TreeNode):
     preOrder(root.left)
     preOrder(root.right)
 
-
 #2. InOrder Traversal with recursion
 def inOrder(root: TreeNode):
     if root is None:
@@ -37,7 +32,6 @@ def inOrder(root: TreeNode):
     print(root.val, end=", ")
     inOrder(root.right)
 
-
 #3. Post Order Traversal with recursion
 def postOrder(root: TreeNode):
     if root is None:
@@ -46,7 +40,6 @@ def postOrder(root: TreeNode):
     postOrder(root.left)
     postOrder(root.right)    
     print(root.val, end=", ")
-
 
 #4. Sum of all nodes
 def sumOfAllNodes(root: TreeNode):
@@ -62,7 +55,6 @@ def diffOddEvenLevel(root: TreeNode):
         return 0
     
     return root.val - diffOddEvenLevel(root.left) - diffOddEvenLevel(root.right)
-
 
 #Driver - Testing
 def main():
@@ -98,7 +90,6 @@ def main():
 if __name__ == "__main__":
     main()
 
-
 #Example Tree
 #   arr = [1, 2, 3, 4, 5, 6, 7]
 #
@@ -115,4 +106,3 @@ if __name__ == "__main__":
 #         2           3
 #      4    5      N      7
 #     8 9  N 10   N N   11 12
-
