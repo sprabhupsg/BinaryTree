@@ -48,7 +48,6 @@ def sumOfAllNodes(root: TreeNode):
     
     return root.val + sumOfAllNodes(root.left) + sumOfAllNodes(root.right)
 
-
 #5. Get difference of values at Even & Odd level
 def diffOddEvenLevel(root: TreeNode):
     if not root:
@@ -56,9 +55,55 @@ def diffOddEvenLevel(root: TreeNode):
     
     return root.val - diffOddEvenLevel(root.left) - diffOddEvenLevel(root.right)
 
+#6. Get Number of Nodes in a Binary Tree
+def countNodes(root: TreeNode):
+    if not root:
+        return 0
+    
+    return 1 + countNodes(root.left) + countNodes(root.right)
+
+#7. Get number of Leaf Nodes in Binary Tree
+def countLeafNodes(root: TreeNode):
+    if not root:
+        return 0
+
+    if root.left is None and root.right is None:
+        return 1
+    
+    return countLeafNodes(root.left) + countLeafNodes(root.right)
+
+#8. Get Height of a Binary Tree
+def heightOfTree(root: TreeNode):
+    if not root:
+        return 0
+
+    return max(heightOfTree(root.left), heightOfTree(root.right))+1
+
+#9. Print elements at given level in Binary Tree
+def printAtLevel(root: TreeNode, level):
+    if root is None:
+        return
+
+    if level == 1:
+        print(root.val, end=", ")
+        return
+
+    printAtLevel(root.left, level-1)
+    printAtLevel(root.right, level-1)
+
+#10. Print elements in Level order Recursion
+def printAllLevel(root: TreeNode):
+    if not root:
+        return 0
+
+    height = heightOfTree(root)
+    for i in range(height):
+        printAtLevel(root, i+1)
+        print("\n")
+
 #Driver - Testing
 def main():
-    print("\n Hello github")
+    print("\n##### Hello Binary Tree #####")
 
     #Example 1
     arr = [1, 2, 3, 4, 5, 6, 7]
@@ -70,22 +115,37 @@ def main():
     #root = None    
     #root = createLevelOrder(root, arr, 0, len(arr))
 
-    #print("\n preOrder")
-    #preOrder(root)
+    print("\n===== 1. PreOrder =====")
+    preOrder(root)
     
-    print("\n inOrder")
+    print("\n\n===== 2. InOrder =====")
     inOrder(root)
 
-    #print("\n postOrder")
-    #postOrder(root)
+    print("\n\n===== 3. PostOrder =====")
+    postOrder(root)
 
-    print("\n Sum of all nodes")
+    print("\n\n===== 4. Sum of all nodes =====")
     print(sumOfAllNodes(root))
 
-    print("\n Diff of odd and even")
+    print("\n===== 5. Get difference of values at Even & Odd level =====")
     print(diffOddEvenLevel(root))
+
+    print("\n===== 6. Get Number of Nodes in a Binary Tree =====")
+    print(countNodes(root))
+
+    print("\n===== 7. Get number of Leaf Nodes in Binary Tree =====")
+    print(countLeafNodes(root))
+
+    print("\n===== 8. Get Height of a Binary Tree =====")
+    print(heightOfTree(root))
+
+    print("\n===== 9. Print elements at given level in Binary Tree =====")
+    printAtLevel(root, 2)
+
+    print("\n===== 10. Print elements in Level order Recursion =====")
+    printAllLevel(root)
     
-    print("\n \n End github")    
+    print("\n \n##### End of Binary Tree #####")    
 
 if __name__ == "__main__":
     main()
@@ -97,7 +157,6 @@ if __name__ == "__main__":
 #           1
 #       2        3
 #    4    5   6     7
-
 
 #   arr = [1, 2, 3, 4, 5, None, 7, 8, 9, None, 10, None, None, 11, 12]    
 #
